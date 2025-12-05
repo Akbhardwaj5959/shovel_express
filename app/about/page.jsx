@@ -66,7 +66,7 @@ export default function Home() {
       </section>
 
       <StudentSliderAgain />
-      <GoogleMap src="https://www.google.com/maps/embed?pb=YOUR_EMBED_CODE" />
+      {/* <GoogleMap src="https://www.google.com/maps/embed?pb=YOUR_EMBED_CODE" /> */}
     </main>
   );
 }

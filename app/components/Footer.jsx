@@ -2,12 +2,7 @@
 
 function Footer() {
   return (
-    <footer className=" text-gray-400 py-12" style={{
-          backgroundImage: "url('/snow.png')",
-          // optional dark overlay ke liye:
-          backgroundColor: "rgba(0,0,0,0.4)",
-          backgroundBlendMode: "overlay",
-        }} >
+    <footer className=" text-gray-400 py-12 snow-bg"  >
       <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-4 sm:px-6 lg:px-8">
         <div>
           <h2 className="text-white text-lg font-semibold mb-4">About Us</h2>
@@ -23,7 +18,7 @@ function Footer() {
             <li>
               <a
                 href="/"
-                className="hover:text-black text-white transition-colors duration-300"
+                className="hover:text-blue-500 text-white transition-colors duration-300"
               >
                 Home
               </a>
@@ -31,7 +26,7 @@ function Footer() {
             <li>
               <a
                 href="/about"
-                className="hover:text-black text-white transition-colors duration-300"
+                className="hover:text-blue-500 text-white transition-colors duration-300"
               >
                 About
               </a>
@@ -39,7 +34,7 @@ function Footer() {
             <li>
               <a
                 href="/services"
-                className="hover:text-black text-white transition-colors duration-300"
+                className="hover:text-blue-500 text-white transition-colors duration-300"
               >
                 Services
               </a>
@@ -47,7 +42,7 @@ function Footer() {
             <li>
               <a
                 href="/gallery"
-                className="hover:text-black text-white transition-colors duration-300"
+                className="hover:text-blue-500 text-white transition-colors duration-300"
               >
                 Gallery
               </a>
@@ -55,7 +50,7 @@ function Footer() {
             <li>
               <a
                 href="/contact"
-                className="hover:text-black text-white transition-colors duration-300"
+                className="hover:text-blue-500 text-white transition-colors duration-300"
               >
                 Contact
               </a>
@@ -67,19 +62,19 @@ function Footer() {
           <div className="flex space-x-4">
             <a
               href="#"
-              className="hover:text-black text-white transition-colors duration-300"
+              className="hover:text-blue-500 text-white transition-colors duration-300"
             >
               Facebook
             </a>
             <a
               href="#"
-              className="hover:text-black text-white transition-colors duration-300"
+              className="hover:text-blue-500 text-white transition-colors duration-300"
             >
               Twitter
             </a>
             <a
               href="#"
-              className="hover:text-black text-white transition-colors duration-300"
+              className="hover:text-blue-500 text-white transition-colors duration-300"
             >
               Instagram
             </a>
@@ -87,7 +82,7 @@ function Footer() {
         </div>
         <div>
           <h2 className="text-white text-lg font-semibold mb-4">Contact Us</h2>
-          <div className="hover:text-black text-white">
+          <div className="hover:text-blue-500 text-white">
           <p>Gurugram, India</p>
           <p>Gurugram 122002</p>
           <p>Email: info@theshovelexpress.com</p>

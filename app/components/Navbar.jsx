@@ -66,7 +66,7 @@ const Navbar = () => {
             href="/contact"
             className="hidden bg-blue-600 lg:flex items-center gap-3 text-white px-10 py-2.5 border border-sky-500 rounded-full ml-4 hover:bg-sky-300 font-Ovo"
           >
-            Get Started
+            Book Now
           </Link>
 
            <button className="block md:hidden ml-3" onClick={openMenu}>

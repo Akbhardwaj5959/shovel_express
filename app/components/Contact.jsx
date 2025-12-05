@@ -49,16 +49,11 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="min-h-screen pt-40 text-white flex items-center justify-center px-4 py-16" style={{
-          backgroundImage: "url('/snow_fram2.png')",
-          // optional dark overlay ke liye:
-          backgroundColor: "rgba(0,0,0,0.4)",
-          backgroundBlendMode: "overlay",
-        }}>
-      <div className="max-w-6xl w-full/50 glass-ice-800 ice-border rounded-3xl p-6 sm:p-10 grid gap-8 lg:grid-cols-[1.1fr,0.9fr]">
+    <main className="min-h-screen pt-40 text-black flex items-center justify-center px-4 py-16">
+      <div className="max-w-6xl w-full/50 glass-ice-800  ice-border rounded-3xl p-6 sm:p-10 grid gap-8 lg:grid-cols-[1.1fr,0.9fr]">
         {/* LEFT: FORM */}
-        <section>
-          <h1 className="text-3xl text-white sm:text-4xl font-bold mb-2">
+        <section >
+          <h1 className="text-3xl text-black sm:text-4xl font-bold mb-2">
             Book Your Snow Removal
           </h1>
           <p className="text-sm sm:text-base text-iceBlue/80 mb-6">
@@ -69,7 +64,7 @@ export default function ContactPage() {
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs uppercase tracking-wide mb-1">
+                <label className="block text-s uppercase tracking-wide mb-1">
                   Name
                 </label>
                 <input
@@ -77,12 +72,12 @@ export default function ContactPage() {
                   value={form.name}
                   onChange={handleChange}
                   required
-                  className="w-full rounded-xl bg-white/10 border border-white/20 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-iceBlue"
+                  className="w-full rounded-xl bg-white/10 border border-black/50 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-iceBlue"
                 />
               </div>
 
               <div>
-                <label className="block text-xs uppercase tracking-wide mb-1">
+                <label className="block text-s uppercase tracking-wide mb-1">
                   Phone
                 </label>
                 <input
@@ -90,13 +85,13 @@ export default function ContactPage() {
                   value={form.phone}
                   onChange={handleChange}
                   required
-                  className="w-full rounded-xl bg-white/10 border border-white/20 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-iceBlue"
+                  className="w-full rounded-xl bg-white/10 border border-black/50 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-iceBlue"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs uppercase tracking-wide mb-1">
+              <label className="block text-s uppercase tracking-wide mb-1">
                 Email
               </label>
               <input
@@ -105,12 +100,12 @@ export default function ContactPage() {
                 value={form.email}
                 onChange={handleChange}
                 required
-                className="w-full rounded-xl bg-white/10 border border-white/20 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-iceBlue"
+                className="w-full rounded-xl bg-white/10 border border-black/50 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-iceBlue"
               />
             </div>
 
             <div>
-              <label className="block text-xs uppercase tracking-wide mb-1">
+              <label className="block text-s uppercase tracking-wide mb-1">
                 Address
               </label>
               <input
@@ -118,13 +113,13 @@ export default function ContactPage() {
                 value={form.address}
                 onChange={handleChange}
                 required
-                className="w-full rounded-xl bg-white/10 border border-white/20 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-iceBlue"
+                className="w-full rounded-xl bg-white/10 border border-black/50 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-iceBlue"
               />
             </div>
 
             <div className="grid sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs uppercase tracking-wide mb-1">
+                <label className="block text-s uppercase tracking-wide mb-1">
                   Service Needed
                 </label>
                 <select
@@ -132,7 +127,7 @@ export default function ContactPage() {
                   value={form.serviceNeeded}
                   onChange={handleChange}
                   required
-                  className="w-full rounded-xl bg-white/10 border border-white/20 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-iceBlue"
+                  className="w-full rounded-xl bg-white/10 border border-black/50 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-iceBlue"
                 >
                   <option value="" className="text-black">Select service</option>
                   <option className="text-black">Driveway Snow Removal</option>
@@ -143,7 +138,7 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <label className="block text-xs uppercase tracking-wide mb-1">
+                <label className="block text-s uppercase tracking-wide mb-1">
                   Preferred Date
                 </label>
                 <input
@@ -151,13 +146,13 @@ export default function ContactPage() {
                   name="preferredDate"
                   value={form.preferredDate}
                   onChange={handleChange}
-                  className="w-full rounded-xl bg-white/10 border border-white/20 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-iceBlue"
+                  className="w-full rounded-xl bg-white/10 border border-black/50 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-iceBlue"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs uppercase tracking-wide mb-1">
+              <label className="block text-s uppercase tracking-wide mb-1">
                 Extra Notes
               </label>
               <textarea
@@ -165,7 +160,7 @@ export default function ContactPage() {
                 rows={3}
                 value={form.notes}
                 onChange={handleChange}
-                className="w-full rounded-xl bg-white/10 border border-white/20 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-iceBlue"
+                className="w-full rounded-xl bg-white/10 border border-black/50 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-iceBlue"
               />
             </div>
 
