@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function WhatsappFloat() {
   return (
     <a
-      href="https://wa.me/16399982048?text=Hello%20I%20want%20to%20know%20more%20about%20your%20classes"
+      href="https://wa.me/16399982048?text=Hello%20I%20want%20to%20know%20more%20about%20your%20packges"
       target="_blank"
       rel="noopener noreferrer"
       className="fixed z-50 bottom-4 right-4 sm:bottom-6 sm:right-6 block"
