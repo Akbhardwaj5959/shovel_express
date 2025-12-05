@@ -13,8 +13,8 @@ import WhatsappFloat from "./components/Whatsapp";
 // });
 
 export const metadata = {
-  title: "the shovel express",
-  description: "snow removal services",
+  title: "The Shovel Express",
+  description: "Snow Removal Services",
 };
 
 export default function RootLayout({ children }) {

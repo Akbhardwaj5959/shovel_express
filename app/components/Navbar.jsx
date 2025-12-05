@@ -17,9 +17,10 @@ const Navbar = () => {
 
   return (
     <>
-    <div className="fixed top-0 right-0 w-11/12 -z-10 translate-y-[-80%] lg:translate-y-[-60%] ">
+    <div className="fixed top-0 right-0 w-11/12 -z-10 translate-y-[-80%] lg:translate-y-[-60%] h-96 bg-gradient-to-b from-blue-400 via-blue-200 to-transparent rounded-full"></div>
+    {/* <div className="fixed top-0 right-0 w-11/12 -z-10 translate-y-[-80%] lg:translate-y-[-60%] ">
       <Image src={assets.header_bg_color} alt="header bg color" className="w-full" />
-    </div>
+    </div> */}
       <nav className="w-full fixed px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between z-50 ">
         <Link href="/" className="  ">
           <Image
