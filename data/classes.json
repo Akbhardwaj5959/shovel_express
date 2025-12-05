@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Lorem Ipsum",
+    "description": "Lorem100 ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+     "image": "/student/2.png"
+  },
+  {
+    "title": "Lorem Ipsum",
+    "description": "Lorem100 ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "image": "/student/3.png"
+  },
+  {
+    "title": "Lorem Ipsum",
+    "description": "Lorem100 ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "image": "/student/5.png"
+  },
+  {
+    "title": "Lorem Ipsum",
+    "description": "Lorem100 ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "image": "/student/6.png"
+  }
+]

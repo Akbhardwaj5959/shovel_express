@@ -1,0 +1,15 @@
+[
+  {
+    "title": "COMMERCIAL",
+    "description": "Serve your property, business, and commercial spaces all winter long.",
+    "image": "/banner1.png",
+    "buttonText": "Explore More"
+  },
+  {
+    "title": "RESIDENTIAL",
+    "description": "Provide snow removal services for homes and businesses.",
+    "image": "/banner2.png",
+    "buttonText": "Explore More"
+  }
+  
+]
