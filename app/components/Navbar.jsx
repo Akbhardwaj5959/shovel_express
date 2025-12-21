@@ -17,7 +17,7 @@ const Navbar = () => {
 
   return (
     <>
-    <div className="fixed top-0 right-0 w-11/12 -z-10 translate-y-[-80%] lg:translate-y-[-60%] h-96 bg-gradient-to-b from-blue-400 via-blue-200 to-transparent rounded-full"></div>
+    <div className="fixed top-0 right-0 w-11/12 -z-10 translate-y-[-80%] lg:translate-y-[-60%] h-96 bg-sky-200/40 backdrop-blur-md border border-sky-100/40 rounded-full"></div>
     {/* <div className="fixed top-0 right-0 w-11/12 -z-10 translate-y-[-80%] lg:translate-y-[-60%] ">
       <Image src={assets.header_bg_color} alt="header bg color" className="w-full" />
     </div> */}
@@ -76,37 +76,37 @@ const Navbar = () => {
 
 
         </div>
-        {/* mobile menu */}
-        <ul ref={sideMenuRef} className="flex md:hidden flex-col gap-4 py-20 px-10 fixed -right-64
-         top-0 bottom-0 w-64 z-50  h-screen bg-rose-50 transition duration-500">
+        {/* mobile menu - frosty/snow theme */}
+        <ul
+          ref={sideMenuRef}
+          className="flex md:hidden flex-col gap-5 py-20 px-6 fixed -right-64 top-0 bottom-0 w-64 z-50 h-screen bg-sky-200/30 backdrop-blur-sm border-l border-sky-100/30 transition-transform duration-500 overflow-y-auto"
+        >
           <div className="absolute top-6 right-6" onClick={closeMenu}>
-            <Image src={assets.close_black} alt="Close Icon" className="w-5  cursor-pointer" />
+            <Image
+              src={assets.close_black}
+              alt="Close Icon"
+              className="w-6 cursor-pointer text-sky-700/80 hover:scale-110 transition"
+            />
           </div>
-          <li>
-            <Link href="/" className=" font-Ovo" onClick={closeMenu}>
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link href="/about" className=" font-Ovo" onClick={closeMenu}>
-              About
-            </Link>
-          </li>
-          <li>
-            <Link href="/services" className=" font-Ovo" onClick={closeMenu}>
-              Services
-            </Link>
-          </li>
-          <li>
-            <Link href="/contact" className=" font-Ovo" onClick={closeMenu}>
-              Contact
-            </Link>
-          </li>
-          <li>
-            <Link href="/gallery" className=" font-Ovo" onClick={closeMenu}>
-              Gallery
-            </Link>
-          </li>
+
+          {/** Menu items: frosted cards matching site theme */}
+          {[
+            ["/", "Home"],
+            ["/about", "About"],
+            ["/services", "Services"],
+            ["/contact", "Contact"],
+            ["/gallery", "Gallery"],
+          ].map(([href, label]) => (
+            <li key={label}>
+              <Link
+                href={href}
+                onClick={closeMenu}
+                className="block px-4 py-3 font-Ovo text-slate-800 bg-white/20 border border-sky-100/30 rounded-2xl shadow-sm hover:shadow-md hover:bg-white/60 hover:text-sky-800 transition duration-200 text-center font-semibold"
+              >
+                {label}
+              </Link>
+            </li>
+          ))}
         </ul>
         
       </nav>
