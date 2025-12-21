@@ -105,7 +105,8 @@ export async function POST(req) {
     );
   } catch (error) {
     console.error("CONTACT API ERROR:", error);
-    return new Response(JSON.stringify({ error: "Failed to send email" }), {
+    console.error("Error details:", error.message, error.stack);
+    return new Response(JSON.stringify({ error: error.message || "Failed to send email" }), {
       status: 500,
     });
   }
