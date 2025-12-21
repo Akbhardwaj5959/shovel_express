@@ -22,7 +22,7 @@ export default function Residential_Price() {
       tag: "Premium",
     },
   ];
-
+ 
   return (
     <main className="min-h-screen mt-25 bg-blue-200 text-black rounded-3xl shadow-lg shadow-blue-300/40">
       {/* Top gradient bar */}
@@ -93,16 +93,37 @@ export default function Residential_Price() {
             </div>
           ))}
         </section>
-        <div>
-            <p className="text-sm mt-10 text-iceBlue/80 text-center">
-              One-time driveway clearing: $50
-            </p>
-            <p className="text-sm mt-10 text-iceBlue/80 text-center">
-                Add-ons: Corner Lot +$30, Black Ice +$40
-            </p>
-            <p className="text-sm mt-10 text-iceBlue/80 text-center">
-                Regular seasonal clients get priority response during storms
-            </p>
+
+        {/* Additional pricing info - styled card */}
+        <div className="mt-8 p-6 bg-gradient-to-br from-blue-50 to-iceBlue/10 border-2 border-iceBlue/40 rounded-2xl shadow-md hover:shadow-lg hover:border-iceBlue/70 transition duration-300 transform hover:-translate-y-0.5">
+          <div className="space-y-4">
+            <div className="flex items-center gap-3 p-3 bg-white/60 rounded-lg border border-iceBlue/20 hover:bg-white hover:border-iceBlue/50 transition">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-600 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg>
+              <p className="text-sm font-medium text-black">
+                One-time driveway clearing: <span className="font-bold text-blue-600">$50</span>
+              </p>
+            </div>
+            
+            <div className="flex items-center gap-3 p-3 bg-white/60 rounded-lg border border-iceBlue/20 hover:bg-white hover:border-iceBlue/50 transition">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-600 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2c-1.1 0-2 .9-2 2v9c0 1.1.9 2 2 2s2-.9 2-2V4c0-1.1-.9-2-2-2zm6.5 11.5c0 1.4-1.1 2.5-2.5 2.5H8c-1.4 0-2.5-1.1-2.5-2.5S6.6 9 8 9h8c1.4 0 2.5 1.1 2.5 2.5z" />
+              </svg>
+              <p className="text-sm font-medium text-black">
+                Add-ons: <span className="font-bold">Corner Lot +$30</span>, <span className="font-bold">Black Ice +$40</span>
+              </p>
+            </div>
+
+            <div className="flex items-center gap-3 p-3 bg-white/60 rounded-lg border border-iceBlue/20 hover:bg-white hover:border-iceBlue/50 transition">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-600 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2l1.41 1.41L13 5v4h4l1.59-1.59L20 8l-8 8-8-8 1.41-1.41L7 9h4V5l-0.41-1.59L12 2z" />
+              </svg>
+              <p className="text-sm font-medium text-black">
+                Regular seasonal clients get <span className="font-bold text-blue-600">priority response</span> during storms
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </main>

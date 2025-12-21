@@ -71,9 +71,7 @@ const GalleryPage = () => {
                   {section.subtitle}
                 </p>
               </div>
-              <p className="text-[11px] sm:text-xs text-iceBlue/70">
-                Swipe on mobile • Click to expand
-              </p>
+              
             </div>
 
             {/* Swipeable row on mobile, grid on desktop */}

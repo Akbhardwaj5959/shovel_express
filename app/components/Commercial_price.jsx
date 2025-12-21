@@ -25,7 +25,7 @@ export default function Residential_Price() {
   ];
 
   return (
-    <main className="min-h-screen mt-25 snow-bg text-white">
+    <main className="min-h-screen mt-25 snow-bg rounded-3xl text-white">
       {/* Top gradient bar */}
       <div className="h-2 w-full bg-gradient-to-r from-iceBlue/70 via-white/60 to-iceBlue/70" />
 
@@ -94,12 +94,12 @@ export default function Residential_Price() {
             </div>
           ))}
         </section>
-        <div>
+        {/* <div>
             <p className="text-sm mt-10 text-iceBlue/80 text-center">
               One-time clearing: $180 / $220 / $280
             </p>
             <p className="text-sm mt-10 text-iceBlue/80 text-center">
-                Add■ons: Corner Access +$20, Black Ice from $50
+                Add-ons: Corner Access +$20, Black Ice from $50
             </p>
             <p className="text-sm mt-10 text-iceBlue/80 text-center">
                 Ideal for: retail stores, office buildings, churches, restaurants, apartment complexes
@@ -107,6 +107,36 @@ export default function Residential_Price() {
             <p className="text-sm mt-10 text-iceBlue/80 text-center">
                Priority morning clearing available for all businesses
             </p>
+        </div> */}
+         <div className="mt-8 p-6 bg-gradient-to-br from-blue-50 to-iceBlue/10 border-2 border-iceBlue/40 rounded-2xl shadow-md hover:shadow-lg hover:border-iceBlue/70 transition duration-300 transform hover:-translate-y-0.5">
+          <div className="space-y-4">
+            <div className="flex items-center gap-3 p-3 bg-white/60 rounded-lg border border-iceBlue/20 hover:bg-white hover:border-iceBlue/50 transition">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-600 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg>
+              <p className="text-sm font-medium text-black">
+                One-time clearing:  <span className="font-bold text-blue-600">$180 / $220 / $280</span>
+              </p>
+            </div>
+            
+            <div className="flex items-center gap-3 p-3 bg-white/60 rounded-lg border border-iceBlue/20 hover:bg-white hover:border-iceBlue/50 transition">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-600 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2c-1.1 0-2 .9-2 2v9c0 1.1.9 2 2 2s2-.9 2-2V4c0-1.1-.9-2-2-2zm6.5 11.5c0 1.4-1.1 2.5-2.5 2.5H8c-1.4 0-2.5-1.1-2.5-2.5S6.6 9 8 9h8c1.4 0 2.5 1.1 2.5 2.5z" />
+              </svg>
+              <p className="text-sm font-medium text-black">
+                Add-ons: <span className="font-bold"> Corner Access +$20,</span>, <span className="font-bold">Black Ice from $50</span>
+              </p>
+            </div>
+
+            <div className="flex items-center gap-3 p-3 bg-white/60 rounded-lg border border-iceBlue/20 hover:bg-white hover:border-iceBlue/50 transition">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-600 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2l1.41 1.41L13 5v4h4l1.59-1.59L20 8l-8 8-8-8 1.41-1.41L7 9h4V5l-0.41-1.59L12 2z" />
+              </svg>
+              <p className="text-sm font-medium text-black">
+                Ideal for:  <span className="font-bold text-blue-600"> retail stores, office buildings, churches, restaurants, apartment</span> complexes
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </main>

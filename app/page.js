@@ -31,6 +31,7 @@ export default function Home() {
               gap-6 sm:gap-8
               justify-items-center
               p-10  min-h-screen
+              rounded-3xl
             "
         style={{
           backgroundImage: "url('/snow_fram2.png')",

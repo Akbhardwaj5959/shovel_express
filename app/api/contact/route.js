@@ -1,12 +1,19 @@
-// app/api/contact/route.js
+
 import nodemailer from "nodemailer";
 import axios from "axios";
 
 export async function POST(req) {
   try {
-    const body = await req.json();
-    const { name, address, serviceNeeded, preferredDate, phone, email, notes } =
-      body;
+    const formData = await req.formData();
+    const name = formData.get("name");
+    const address = formData.get("address");
+    const serviceNeeded = formData.get("serviceNeeded");
+    const preferredDate = formData.get("preferredDate");
+    const phone = formData.get("phone");
+    const email = formData.get("email");
+    const additionalWork = JSON.parse(formData.get("additionalWork") || "[]");
+    const notes = formData.get("notes");
+    const photoFile = formData.get("photo");
 
     if (!name || !address || !serviceNeeded || !phone || !email) {
       return new Response(
@@ -42,6 +49,17 @@ export async function POST(req) {
       },
     });
 
+    // Prepare attachments
+    const attachments = [];
+    if (photoFile) {
+      const buffer = Buffer.from(await photoFile.arrayBuffer());
+      attachments.push({
+        filename: photoFile.name,
+        content: buffer,
+        contentType: photoFile.type,
+      });
+    }
+
     const mailOptions = {
       from: `"Shovel Express Form" <${process.env.CONTACT_EMAIL_USER}>`,
       to: process.env.CONTACT_EMAIL_TO || process.env.CONTACT_EMAIL_USER,
@@ -56,10 +74,17 @@ export async function POST(req) {
 
             Service Needed: ${serviceNeeded}
             Preferred Date: ${preferredDate || "Not specified"}
+            Additional Work: ${
+              additionalWork && additionalWork.length > 0
+                ? additionalWork.join(", ")
+                : "None"
+            }
             Notes: ${notes || "None"}
 
+            Photo Attached: ${photoFile ? "Yes" : "No"}
             Approx Location: ${locationInfo}
              `,
+      attachments: attachments,
     };
 
     await transporter.sendMail(mailOptions);

@@ -1,5 +1,6 @@
 import GoogleMap from "../components/GoogleMap";
 import StudentSliderAgain from "../components/StudentSliderAgain";
+import FAQ from "../components/FAQ";
 
 export default function Home() {
   return (
@@ -24,7 +25,7 @@ export default function Home() {
         </section>
       </div>
 
-      <section className="m-10"
+      <section className="m-10 rounded-3xl shadow-lg shadow-blue-300/40"
         style={{
           backgroundImage: "url('/snow_fram.png')",
           // optional dark overlay ke liye:
@@ -65,6 +66,7 @@ export default function Home() {
         </div>
       </section>
 
+      <FAQ />
       <StudentSliderAgain />
       {/* <GoogleMap src="https://www.google.com/maps/embed?pb=YOUR_EMBED_CODE" /> */}
     </main>

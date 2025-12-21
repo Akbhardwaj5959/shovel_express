@@ -7,65 +7,65 @@ const testimonials = [
   {
     id: 1,
     name: "Nishant Kumar",
-    location: "Shalom Hills International School, Sector-43",
+    // location: "Shalom Hills International School, Sector-43",
     feedback:"Lorem2025 ipsum dolor sit amet consectetur adipisicing elit. Officia, cumque.",
-    image: "/Mentors/prince.jpg",
+    // image: "/Mentors/prince.jpg",
     bgColor: "bg-gray-500 text-white",
   },
   {
     id: 2,
     name: "Abhijit Jayarajan",
-    location: "Shalom Hills International School, Sector-43",
+    // location: "Shalom Hills International School, Sector-43",
     feedback:"Lorem2025 ipsum dolor sit amet consectetur adipisicing elit. Officia, cumque.",
-    image: "/Mentors/2.jpg",
+    // image: "/Mentors/2.jpg",
     bgColor: "bg-blue-500 text-white",
   },
   {
     id: 3,
     name: "Abhijit Jayarajan",
-    location: "Shalom Hills International School, Sector-43",
+    // location: "Shalom Hills International School, Sector-43",
     feedback:"Lorem2025 ipsum dolor sit amet consectetur adipisicing elit. Officia, cumque.",
-    image: "/Mentors/3.jpg",
+    // image: "/Mentors/3.jpg",
     bgColor: "bg-gray-500 text-white",
   },
   {
     id: 4,
     name: "Abhijit Jayarajan",
-    location: "Shalom Hills International School, Sector-43",
+    // location: "Shalom Hills International School, Sector-43",
     feedback:"Lorem2025 ipsum dolor sit amet consectetur adipisicing elit. Officia, cumque.",
-    image: "/Mentors/4.jpg",
+    // image: "/Mentors/4.jpg",
     bgColor: "bg-blue-500 text-white",
   },
   {
     id: 5,
     name: "Abhijit Jayarajan",
-    location: "Shalom Hills International School, Sector-43",
+    // location: "Shalom Hills International School, Sector-43",
     feedback:"Lorem2025 ipsum dolor sit amet consectetur adipisicing elit. Officia, cumque.",
-    image: "/Mentors/5.jpg",
+    // image: "/Mentors/5.jpg",
     bgColor: "bg-gray-500 text-white",
   },
   {
     id: 6,
     name: "Abhijit Jayarajan",
-    location: "Shalom Hills International School, Sector-43",
+    // location: "Shalom Hills International School, Sector-43",
     feedback:"Lorem2025 ipsum dolor sit amet consectetur adipisicing elit. Officia, cumque.",
-    image: "/Mentors/7.jpg",
+    // image: "/Mentors/7.jpg",
     bgColor: "bg-blue-500 text-white",
   },
   {
     id: 7,
     name: "Abhijit Jayarajan",
-    location: "Shalom Hills International School, Sector-43",
+    // location: "Shalom Hills International School, Sector-43",
     feedback:"Lorem2025 ipsum dolor sit amet consectetur adipisicing elit. Officia, cumque.",
-    image: "/Mentors/8.jpg",
+    // image: "/Mentors/8.jpg",
     bgColor: "bg-gray-500 text-white",
   },
   {
     id: 8,
     name: "Abhijit Jayarajan",
-    location: "Shalom Hills International School, Sector-43",
+    // location: "Shalom Hills International School, Sector-43",
     feedback:"Lorem2025 ipsum dolor sit amet consectetur adipisicing elit. Officia, cumque.",
-    image: "/Mentors/9.jpg",
+    // image: "/Mentors/9.jpg",
     bgColor: "bg-blue-500 text-white",
   },
  
@@ -112,14 +112,14 @@ export default function StudentSliderAgain() {
                 className={`${t.bgColor} w-full max-w-lg rounded-2xl shadow-lg p-4 sm:p-6 md:p-8 flex flex-col items-center`}
               >
                 {/* Image */}
-                <div className="relative mb-4 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-4 border-white shadow-md bg-white">
+                {/* <div className="relative mb-4 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-4 border-white shadow-md bg-white">
                   <Image
                     src={t.image}
                     alt={t.name}
                     fill
                     className="object-cover object-center" // image crop center se hogi
                   />
-                </div>
+                </div> */}
 
                 {/* Content */}
                 <div className="w-full px-2 sm:px-6">
@@ -130,9 +130,9 @@ export default function StudentSliderAgain() {
                   <h3 className="text-base sm:text-lg md:text-xl font-semibold text-center">
                     {t.name}
                   </h3>
-                  <p className="text-xs sm:text-sm text-gray-100/90 text-center mt-1">
+                  {/* <p className="text-xs sm:text-sm text-gray-100/90 text-center mt-1">
                     {t.location}
-                  </p>
+                  </p> */}
                 </div>
               </div>
             </div>

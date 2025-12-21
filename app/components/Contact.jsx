@@ -10,30 +10,95 @@ export default function ContactPage() {
     preferredDate: "",
     phone: "",
     email: "",
+    additionalWork: [],
     notes: "",
+    photo: null,
   });
 
-  const [status, setStatus] = useState({ loading: false, message: "" });
+  const [status, setStatus] = useState({ loading: false, message: "", type: "" });
+  const [photoError, setPhotoError] = useState("");
+
+  const additionalWorkOptions = [
+    "Black Ice",
+    "Corner lot",
+    "Scraping & Salting",
+  ];
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  const handlePhotoChange = (e) => {
+    const file = e.target.files?.[0];
+    setPhotoError("");
+
+    if (!file) return;
+
+    // Validate file type
+    if (!file.type.startsWith("image/")) {
+      setPhotoError("Please upload an image file");
+      return;
+    }
+
+    // Validate file size (200KB - 2MB)
+    const minSize = 200 * 1024; // 200KB
+    const maxSize = 2 * 1024 * 1024; // 2MB
+
+    if (file.size < minSize) {
+      setPhotoError("Image size must be at least 200KB");
+      return;
+    }
+
+    if (file.size > maxSize) {
+      setPhotoError("Image size must not exceed 2MB");
+      return;
+    }
+
+    setForm({ ...form, photo: file });
+  };
+
+  const handleCheckboxChange = (e) => {
+    const { value, checked } = e.target;
+    setForm((prevForm) => ({
+      ...prevForm,
+      additionalWork: checked
+        ? [...prevForm.additionalWork, value]
+        : prevForm.additionalWork.filter((item) => item !== value),
+    }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus({ loading: true, message: "" });
+    setStatus({ loading: true, message: "", type: "" });
 
     try {
+      // Create FormData to send file and form data
+      const formData = new FormData();
+      formData.append("name", form.name);
+      formData.append("address", form.address);
+      formData.append("serviceNeeded", form.serviceNeeded);
+      formData.append("preferredDate", form.preferredDate);
+      formData.append("phone", form.phone);
+      formData.append("email", form.email);
+      formData.append("additionalWork", JSON.stringify(form.additionalWork));
+      formData.append("notes", form.notes);
+      if (form.photo) {
+        formData.append("photo", form.photo);
+      }
+
       const res = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: formData,
       });
 
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Something went wrong");
 
-      setStatus({ loading: false, message: "Request sent successfully!" });
+      setStatus({ 
+        loading: false, 
+        message: "Request sent successfully!", 
+        type: "success" 
+      });
       setForm({
         name: "",
         address: "",
@@ -41,10 +106,16 @@ export default function ContactPage() {
         preferredDate: "",
         phone: "",
         email: "",
+        additionalWork: [],
         notes: "",
+        photo: null,
       });
     } catch (err) {
-      setStatus({ loading: false, message: err.message });
+      setStatus({ 
+        loading: false, 
+        message: err.message, 
+        type: "error" 
+      });
     }
   };
 
@@ -130,10 +201,9 @@ export default function ContactPage() {
                   className="w-full rounded-xl bg-white/10 border border-black/50 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-iceBlue"
                 >
                   <option value="" className="text-black">Select service</option>
-                  <option className="text-black">Driveway Snow Removal</option>
-                  <option className="text-black">Commercial Lot Snow Removal</option>
-                  <option className="text-black">Black Ice Removal</option>
-                  <option className="text-black">Seasonal Monthly Plan</option>
+                  <option className="text-black">Residental Snow Removal</option>
+                  <option className="text-black">Commercial Snow Removal</option>
+                  
                 </select>
               </div>
 
@@ -153,6 +223,26 @@ export default function ContactPage() {
 
             <div>
               <label className="block text-s uppercase tracking-wide mb-1">
+                Add - ons
+              </label>
+              <div className="space-y-2 bg-white/5 p-3 rounded-xl border border-black/50">
+                {additionalWorkOptions.map((option) => (
+                  <label key={option} className="flex items-center cursor-pointer">
+                    <input
+                      type="checkbox"
+                      value={option}
+                      checked={form.additionalWork.includes(option)}
+                      onChange={handleCheckboxChange}
+                      className="w-4 h-4 rounded border-black/50 bg-white/10 cursor-pointer"
+                    />
+                    <span className="ml-2 text-sm">{option}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-s uppercase tracking-wide mb-1">
                 Extra Notes
               </label>
               <textarea
@@ -164,6 +254,34 @@ export default function ContactPage() {
               />
             </div>
 
+            <div>
+              <label className="block text-s uppercase tracking-wide mb-1">
+                Upload Photo (Optional)
+              </label>
+              <div className="flex items-center justify-center w-full">
+                <label className="w-full flex flex-col items-center justify-center px-4 py-3 bg-white/5 border-2 border-dashed border-iceBlue/40 rounded-xl cursor-pointer hover:bg-white/10 transition">
+                  <div className="flex flex-col items-center justify-center pt-2 pb-2">
+                    <svg className="w-6 h-6 text-iceBlue/70 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                    </svg>
+                    <p className="text-xs text-iceBlue/70">
+                      {form.photo ? form.photo.name : "Click to upload image"}
+                    </p>
+                    <p className="text-xs text-iceBlue/60">PNG, JPG, GIF up to 2MB (min 200KB)</p>
+                  </div>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handlePhotoChange}
+                    className="hidden"
+                  />
+                </label>
+              </div>
+              {photoError && (
+                <p className="text-xs text-red-400 mt-2">{photoError}</p>
+              )}
+            </div>
+
             <button
               type="submit"
               disabled={status.loading}
@@ -173,7 +291,9 @@ export default function ContactPage() {
             </button>
 
             {status.message && (
-              <p className="text-xs text-iceBlue/80 mt-1">{status.message}</p>
+              <p className={`text-xs mt-1 ${status.type === 'success' ? 'text-green-400' : 'text-red-400'}`}>
+                {status.message}
+              </p>
             )}
           </form>
         </section>
