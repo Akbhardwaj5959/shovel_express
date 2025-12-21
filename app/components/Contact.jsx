@@ -12,7 +12,7 @@ export default function ContactPage() {
     email: "",
     additionalWork: [],
     notes: "",
-    photo: null,
+    photos: [],
   });
 
   const [status, setStatus] = useState({ loading: false, message: "", type: "" });
@@ -29,32 +29,55 @@ export default function ContactPage() {
   };
 
   const handlePhotoChange = (e) => {
-    const file = e.target.files?.[0];
+    const files = e.target.files;
     setPhotoError("");
 
-    if (!file) return;
+    if (!files || files.length === 0) return;
 
-    // Validate file type
-    if (!file.type.startsWith("image/")) {
-      setPhotoError("Please upload an image file");
-      return;
+    const newPhotos = [...form.photos];
+
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+
+      // Check total count (max 4 images)
+      if (newPhotos.length >= 4) {
+        setPhotoError("Maximum 4 images allowed");
+        break;
+      }
+
+      // Validate file type
+      if (!file.type.startsWith("image/")) {
+        setPhotoError("Please upload only image files");
+        continue;
+      }
+
+      // Validate file size (1MB - 5MB)
+      const minSize = 1 * 1024 * 1024; // 1MB
+      const maxSize = 5 * 1024 * 1024; // 5MB
+
+      if (file.size < minSize) {
+        setPhotoError(`${file.name}: Image size must be at least 1MB`);
+        continue;
+      }
+
+      if (file.size > maxSize) {
+        setPhotoError(`${file.name}: Image size must not exceed 5MB`);
+        continue;
+      }
+
+      // Add file to photos array
+      newPhotos.push(file);
     }
 
-    // Validate file size (200KB - 2MB)
-    const minSize = 200 * 1024; // 200KB
-    const maxSize = 2 * 1024 * 1024; // 2MB
+    setForm({ ...form, photos: newPhotos });
+  };
 
-    if (file.size < minSize) {
-      setPhotoError("Image size must be at least 200KB");
-      return;
-    }
-
-    if (file.size > maxSize) {
-      setPhotoError("Image size must not exceed 2MB");
-      return;
-    }
-
-    setForm({ ...form, photo: file });
+  const removePhoto = (index) => {
+    setForm({
+      ...form,
+      photos: form.photos.filter((_, i) => i !== index),
+    });
+    setPhotoError("");
   };
 
   const handleCheckboxChange = (e) => {
@@ -82,8 +105,10 @@ export default function ContactPage() {
       formData.append("email", form.email);
       formData.append("additionalWork", JSON.stringify(form.additionalWork));
       formData.append("notes", form.notes);
-      if (form.photo) {
-        formData.append("photo", form.photo);
+      if (form.photos.length > 0) {
+        form.photos.forEach((photo, index) => {
+          formData.append(`photo_${index}`, photo);
+        });
       }
 
       const res = await fetch("/api/contact", {
@@ -108,7 +133,7 @@ export default function ContactPage() {
         email: "",
         additionalWork: [],
         notes: "",
-        photo: null,
+        photos: [],
       });
     } catch (err) {
       setStatus({ 
@@ -256,7 +281,7 @@ export default function ContactPage() {
 
             <div>
               <label className="block text-s uppercase tracking-wide mb-1">
-                Upload Photo (Optional)
+                Upload Photos (Optional - Max 4)
               </label>
               <div className="flex items-center justify-center w-full">
                 <label className="w-full flex flex-col items-center justify-center px-4 py-3 bg-white/5 border-2 border-dashed border-iceBlue/40 rounded-xl cursor-pointer hover:bg-white/10 transition">
@@ -265,18 +290,53 @@ export default function ContactPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                     </svg>
                     <p className="text-xs text-iceBlue/70">
-                      {form.photo ? form.photo.name : "Click to upload image"}
+                      {form.photos.length > 0 
+                        ? `${form.photos.length} image(s) selected` 
+                        : "Click to upload images"}
                     </p>
-                    <p className="text-xs text-iceBlue/60">PNG, JPG, GIF up to 2MB (min 200KB)</p>
+                    <p className="text-xs text-iceBlue/60">JPG, PNG up to 5MB each (min 1MB) - Max 4 images</p>
                   </div>
                   <input
                     type="file"
                     accept="image/*"
+                    multiple
                     onChange={handlePhotoChange}
                     className="hidden"
                   />
                 </label>
               </div>
+
+              {/* Display uploaded images */}
+              {form.photos.length > 0 && (
+                <div className="mt-3 space-y-2">
+                  <p className="text-xs font-semibold text-iceBlue/80">Selected Images:</p>
+                  <div className="space-y-2 bg-white/5 p-3 rounded-xl">
+                    {form.photos.map((photo, index) => (
+                      <div
+                        key={index}
+                        className="flex items-center justify-between bg-white/10 p-2 rounded-lg border border-iceBlue/20"
+                      >
+                        <div className="flex items-center gap-2 flex-1 min-w-0">
+                          <svg className="w-4 h-4 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v4a1 1 0 001 1h12a1 1 0 001-1V6a2 2 0 00-2-2H4zm12 12H4a2 2 0 01-2-2v-4a1 1 0 00-1-1H.5a1.5 1.5 0 001.5 1.5h3V4a4 4 0 014-4h4a4 4 0 014 4v10a1.5 1.5 0 001.5-1.5h-.5a1 1 0 00-1 1v4a2 2 0 01-2 2z" />
+                          </svg>
+                          <span className="text-xs text-iceBlue/80 truncate">
+                            {photo.name} ({(photo.size / (1024 * 1024)).toFixed(2)}MB)
+                          </span>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => removePhoto(index)}
+                          className="ml-2 px-2 py-1 text-xs bg-red-500/20 text-red-400 rounded hover:bg-red-500/40 transition"
+                        >
+                          Remove
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               {photoError && (
                 <p className="text-xs text-red-400 mt-2">{photoError}</p>
               )}

@@ -13,13 +13,23 @@ export async function POST(req) {
     const email = formData.get("email");
     const additionalWork = JSON.parse(formData.get("additionalWork") || "[]");
     const notes = formData.get("notes");
-    const photoFile = formData.get("photo");
 
     if (!name || !address || !serviceNeeded || !phone || !email) {
       return new Response(
         JSON.stringify({ error: "Missing required fields" }),
         { status: 400 }
       );
+    }
+
+    // ---------- Collect all photos ----------
+    const photoFiles = [];
+    let photoIndex = 0;
+    while (formData.has(`photo_${photoIndex}`)) {
+      const photoFile = formData.get(`photo_${photoIndex}`);
+      if (photoFile) {
+        photoFiles.push(photoFile);
+      }
+      photoIndex++;
     }
 
     // ---------- User IP & location ----------
@@ -51,7 +61,7 @@ export async function POST(req) {
 
     // Prepare attachments
     const attachments = [];
-    if (photoFile) {
+    for (const photoFile of photoFiles) {
       const buffer = Buffer.from(await photoFile.arrayBuffer());
       attachments.push({
         filename: photoFile.name,
@@ -81,7 +91,7 @@ export async function POST(req) {
             }
             Notes: ${notes || "None"}
 
-            Photo Attached: ${photoFile ? "Yes" : "No"}
+            Photos Attached: ${photoFiles.length > 0 ? `Yes (${photoFiles.length} image(s))` : "No"}
             Approx Location: ${locationInfo}
              `,
       attachments: attachments,
