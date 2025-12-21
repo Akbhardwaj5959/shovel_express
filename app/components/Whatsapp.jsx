@@ -11,7 +11,7 @@ export default function WhatsappFloat() {
       aria-label="Chat on WhatsApp"
     >
       <svg
-        className="w-5 h-5 xs:w-11 xs:h-11 sm:w-12 sm:h-12 md:w-13 md:h-13 text-blue-500 drop-shadow-lg hover:scale-110 transition"
+        className="w-10 h-10 xs:w-11 xs:h-11 sm:w-12 sm:h-12 md:w-13 md:h-13 text-blue-500 drop-shadow-lg hover:scale-110 transition"
         fill="currentColor"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
